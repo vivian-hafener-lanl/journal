@@ -1,13 +1,17 @@
 from flask import Flask
+import flask
 from flask.templating import render_template
 from flask import Flask, request, flash, url_for, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///journal.sqlite3'
 app.config['SECRET_KEY'] = "random string"
 
 db = SQLAlchemy(app)
+# login_manager = LoginManager()
+
 
 class journal(db.Model):
     id = db.Column('entry_id', db.Integer, primary_key = True)
@@ -37,6 +41,23 @@ def new():
             flash('Entry added to journal')
             return redirect(url_for('show_all'))
     return render_template('new.html')
+
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.get(user_id)
+
+# @app.route('/login', methohds=['GET', 'POST'])
+# def login():
+#     form = LoginForm()
+#     if form.validate_on_submit():
+#         login_user(user)
+#         flask.flash('Logged in successfully.')
+#         next = flask.request.args.get('next')
+#         if not is_safe_usrl(next):
+#             return flask.abort(400)
+
+#         return flask.redirect(next or flask.url_for('/')) # I might need to change '/' to 'show_all' or something
+#     return flask.render_template('login.html', form = form)
 
 if __name__ == '__main__':
     db.create_all()
