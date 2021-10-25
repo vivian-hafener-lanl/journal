@@ -52,6 +52,7 @@ h3 {
         margin: 0.7em;
         float: left;
         /* Aesthetically I think float works ok here, but I was originally thinking about doing 50/50 */
+        /* This float may cause issues when some entries are quite a bit longer than others in terms of vertical height */
     }
     .entry {
         padding-left: 0.9em;
