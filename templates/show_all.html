@@ -13,8 +13,10 @@
         {%- for message in get_flashed_messages() %}
         {{ message }}
         {%- endfor %}
-
-        <h3>Entries (<a href = "{{ url_for('new') }}">Add entry</a>)</h3>
+        <div>
+            <a href="{{ url_for('new') }}"><button type="button" class="button">New entry:</button></a>
+        </div>
+        
         {% for jrnl_entry in journal %}
             <div class="rounded">
                 <!-- The way these display is not in the proper order. I might have to change this on the database level -->

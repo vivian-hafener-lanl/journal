@@ -15,9 +15,9 @@ h3 {
 }
 
 .button {
-    background-color: purple;
+    background-color: aquamarine;
     border: none;
-    color: white;
+    color: black;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -26,24 +26,35 @@ h3 {
 }
 
 .button:hover {
-    background-color: darkmagenta;
+    background-color: aqua;
+}
+
+
+
+.entry {
+    margin: 5px;
 }
 
 .rounded {
     background-color: aquamarine;
     border-radius: 8px;
     margin: 1.2em;
-    max-width: 600px;
-}
-
-.entry {
-    margin: 5px;
 }
 
 @media only screen and (max-width: 600){
-    
+    .rounded {
+        max-width: 100%;
+    }
 }
-/* Is this next one needed? do some testing */
-@media only screen and (max-width: 4000px) {
-
+@media only screen and (min-width: 1000px) {
+    .rounded {
+        max-width: 50%;
+        margin: 0.7em;
+        float: left;
+        /* Aesthetically I think float works ok here, but I was originally thinking about doing 50/50 */
+    }
+    .entry {
+        padding-left: 0.9em;
+        padding-right: 0.9em;
+    }
 }
