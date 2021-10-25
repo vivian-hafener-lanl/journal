@@ -1,6 +1,6 @@
-* {
+/* * {
     background-color: #3e3e42;
-}
+} */
 
 body {
     background-color: #3e3e42;
@@ -27,4 +27,23 @@ h3 {
 
 .button:hover {
     background-color: darkmagenta;
+}
+
+.rounded {
+    background-color: aquamarine;
+    border-radius: 8px;
+    margin: 1.2em;
+    max-width: 600px;
+}
+
+.entry {
+    margin: 5px;
+}
+
+@media only screen and (max-width: 600){
+    
+}
+/* Is this next one needed? do some testing */
+@media only screen and (max-width: 4000px) {
+
 }
