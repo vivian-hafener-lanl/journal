@@ -3,7 +3,9 @@ import flask
 from flask.templating import render_template
 from flask import Flask, request, flash, url_for, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
-
+# from flask.ext.login import LoginManager
+# login_manager = LoginManager()
+# login_manager.init_app(app) # Is this redundant?
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///journal.sqlite3'
