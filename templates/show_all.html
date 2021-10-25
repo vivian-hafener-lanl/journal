@@ -20,11 +20,11 @@
                 </tr>
             </thead>
             <tbody>
-                {% for entry in journal %}
+                {% for jrnl_entry in journal %}
                     <tr>
-                        <td>{{ entry.title }}</td>
-                        <td>{{ entry.time }}</td>
-                        <td>{{ entry.entry }}</td>
+                        <td>{{ jrnl_entry.title }}</td>
+                        <td>{{ jrnl_entry.time }}</td>
+                        <td>{{ jrnl_entry.entry }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

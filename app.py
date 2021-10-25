@@ -11,9 +11,9 @@ db = SQLAlchemy(app)
 
 class journal(db.Model):
     id = db.Column('entry_id', db.Integer, primary_key = True)
-    time = db.Column(db.String(50)) # I don't know if this is a proper call of the time type
+    time = db.Column(db.String(50))
     title = db.Column(db.String(100))
-    entry = db.Column(db.Text()) # I don't know if this is a proper call of the text type
+    entry = db.Column(db.String(200))
 
     def __init__(self, time, title, entry):
         self.time = time
@@ -30,9 +30,9 @@ def new():
         if not request.form['title'] or not request.form['time'] or not request.form['entry']:
             flash('Please enter something in each field', 'error')
         else:
-            entry = journal(request.form['title'], request.form['time'], request.form['entry'])
+            jrnl_entry = journal(request.form['title'], request.form['time'], request.form['entry'])
 
-            db.session.add(entry)
+            db.session.add(jrnl_entry)
             db.session.commit()
             flash('Entry added to journal')
             return redirect(url_for('show_all'))
