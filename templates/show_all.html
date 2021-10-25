@@ -14,7 +14,7 @@
 
         <h3>Entries (<a href = "{{ url_for('new') }}">Add entry</a>)</h3>
        <!-- There has to be a prettier way of handling this display. I'm going to eventually try to handle it using vertical blocks, like a typical blog or journal would. -->
-        <table>
+        <!-- <table>
             <thead>
                 <tr>
                     <th>Title</th>
@@ -31,6 +31,13 @@
                     </tr>
                 {% endfor %}
             </tbody>
-        </table>
+        </table> -->
+        {% for jrnl_entry in journal %}
+            <div>
+                <h4>{{ jrnl_entry.title }}</h4>
+                <p>{{ jrnl_entry.time }}</p>
+                <p>{{ jrnl_entry.entry }}</p>
+            </div>
+        {% endfor %}
     </body>
 </html>
