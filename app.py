@@ -1,4 +1,3 @@
-import re
 from flask import Flask
 from flask.templating import render_template
 from flask import Flask, request, flash, url_for, redirect, render_template
@@ -37,7 +36,7 @@ def new():
             db.session.commit()
             flash('Entry added to journal')
             return redirect(url_for('show_all'))
-        return render_template('new.html')
+    return render_template('new.html')
 
 if __name__ == '__main__':
     db.create_all()

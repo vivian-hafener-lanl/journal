@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head></head>
+    <body>
+        <h3>Journal</h3>
+        <hr/>
+
+        {%- for message in get_flashed_messages() %}
+        {{ message }}
+        {%- endfor %}
+
+        <h3>Entries (<a href = "{{ url_for('new') }}">Add entry</a>)</h3>
+       
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Time</th>
+                    <th>Entry</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in journal %}
+                    <tr>
+                        <td>{{ entry.title }}</td>
+                        <td>{{ entry.time }}</td>
+                        <td>{{ entry.entry }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
