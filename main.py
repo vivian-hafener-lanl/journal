@@ -4,12 +4,20 @@ from flask.templating import render_template
 from flask import Flask, request, flash, url_for, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///journal.sqlite3'
-app.config['SECRET_KEY'] = "random string"
+# Everything above this line is depracated (probably)
+from flask import Blueprint
+from . import db
 
-db = SQLAlchemy(app)
+main = Blueprint('main', __name__)
 
+# app = Flask(__name__)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///journal.sqlite3'
+# app.config['SECRET_KEY'] = "random string"
+
+# db = SQLAlchemy(app)
+
+
+# Do I need to move this into my __init__?
 class journal(db.Model):
     id = db.Column('entry_id', db.Integer, primary_key = True)
     time = db.Column(db.String(50))
@@ -21,11 +29,11 @@ class journal(db.Model):
         self.title = title
         self.entry = entry
 
-@app.route('/')
+@main.route('/')
 def show_all():
     return render_template('show_all.html', journal = journal.query.all() )
 
-@app.route('/new', methods = ['GET', 'POST'])
+@main.route('/new', methods = ['GET', 'POST'])
 def new():
     if request.method == 'POST':
         if not request.form['title'] or not request.form['time'] or not request.form['entry']:
@@ -41,4 +49,4 @@ def new():
 
 if __name__ == '__main__':
     db.create_all()
-    app.run(debug=True)
+    main.run(debug=True)
