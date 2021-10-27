@@ -2,7 +2,7 @@
 
 from flask import Blueprint, render_template, request, flash, url_for, redirect
 from flask_login import login_required, current_user
-from __init__ import journal, jrnl_db
+from . import journal, jrnl_db
 
 main = Blueprint('main', __name__)
 
