@@ -5,6 +5,22 @@ from flask_login import login_required, current_user
 
 main = Blueprint('main', __name__)
 
+#==============================================
+
+# I don't know if this should go here or in __init__. However, I do know that I will have to rename my db
+
+# class journal(db.Model):
+#     id = db.Column('entry_id', db.Integer, primary_key = True)
+#     time = db.Column(db.String(50))
+#     title = db.Column(db.String(100))
+#     entry = db.Column(db.String(200))
+
+#     def __init__(self, time, title, entry):
+#         self.time = time
+#         self.title = title
+#         self.entry = entry
+# =============================================
+
 @main.route('/')
 def index():
     return render_template('index.html')
