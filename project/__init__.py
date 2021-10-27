@@ -6,7 +6,7 @@ from flask_login import LoginManager
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
-
+jrnl_db = SQLAlchemy() # Does this work? I guess I'll find out
 
 def create_app():
     app = Flask(__name__)
