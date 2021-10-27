@@ -3,6 +3,7 @@
 from flask import Blueprint, render_template, request, flash, url_for, redirect
 from flask_login import login_required, current_user
 from . import journal, jrnl_db
+# !! This import might be broken
 
 main = Blueprint('main', __name__)
 
@@ -36,8 +37,3 @@ def new():
             flash('Entry added to journal')
             return redirect(url_for('show_all'))
     return render_template('new.html')
-
-
-# !! I haven't made this DB yet.
-# if __name__ == '__main__':
-#     jrnl_db.create_all()
