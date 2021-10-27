@@ -1,13 +1,14 @@
 # main.py
 
-from flask import Blueprint, render_template, request, flash, url_for, redirect, 
+from flask import Blueprint, render_template, request, flash, url_for, redirect
 from flask_login import login_required, current_user
 
 main = Blueprint('main', __name__)
 
 #==============================================
 
-# I don't know if this should go here or in __init__. However, I do know that I will have to rename my db
+# I don't know if this should go here or in __init__. However, I do know that I will have to rename my db.
+# I will probably also have to make a new db using the definition that I used in the original
 
 # class journal(db.Model):
 #     id = db.Column('entry_id', db.Integer, primary_key = True)
