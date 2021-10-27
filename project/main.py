@@ -51,3 +51,6 @@ def profile():
 #             flash('Entry added to journal')
 #             return redirect(url_for('show_all'))
 #     return render_template('new.html')
+
+# if __name__ == '__main__':
+#     jrnl_db.create_all()
