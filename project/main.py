@@ -13,3 +13,8 @@ def index():
 @login_required
 def profile():
     return render_template('profile.html', name=current_user.name)
+
+@main.route('/home')
+@login_required
+def homepage():
+    return render_template('show_all.html', name=current_user.name) # show_all doesn't use name yet but I'll add it. Also need to figure out how to only access the data from the individual user
