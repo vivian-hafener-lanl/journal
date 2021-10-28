@@ -14,7 +14,7 @@
         {{ message }}
         {%- endfor %}
         <div>
-            <a href="{{ url_for('new') }}"><button type="button" class="button">New entry:</button></a>
+            <a href="{{ url_for('main.new') }}"><button type="button" class="button">New entry:</button></a>
         </div>
         
         {% for jrnl_entry in journal %}
