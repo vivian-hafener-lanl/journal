@@ -15,9 +15,9 @@
 
         </div>
     </nav>
-
     <body>
-        <h3>Journal</h3>
+        <!-- Make this so it says name's journal -->
+        <h3>{{ name }}'s Journal</h3>
         <hr/>
 
         {%- for message in get_flashed_messages() %}

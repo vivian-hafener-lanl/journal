@@ -8,7 +8,7 @@ Style:
 * Rework the style of the homepage to match the rest of the site and retain responsive design principles
 
 Minor functionality:
-* Add a button that redirects to the signup page from login
+* Add a button that redirects to the signup page from login >>> This will be done once I set up the new navbar
 
 
 

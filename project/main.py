@@ -11,8 +11,6 @@ main = Blueprint('main', __name__)
 def index():
     return redirect(url_for('main.home'))
 
-# Login stuff above this line, journal stuff below this line
-
 @main.route('/home')
 @login_required
 def home():
