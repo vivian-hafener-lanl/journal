@@ -37,5 +37,5 @@ def new():
             jrnl_db.session.add(jrnl_entry)
             jrnl_db.session.commit()
             flash('Entry added to journal')
-            return redirect(url_for('main.homepage'))
+            return redirect(url_for('main.home'))
     return render_template('new.html')
