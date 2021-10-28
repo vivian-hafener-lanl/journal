@@ -6,6 +6,16 @@
         <title>Home - Journal</title>
         <link rel="stylesheet" type="text/css" href="/static/style.css"/>
     </head>
+    <!-- Add CSS GRID to the above, along with mediaqueries -->
+    <nav>
+        <!-- This works for now, convert to a collapsed sidebar menu -->
+        <div class="nav-ul">
+            <li class="nav-li"><a class="nav-a" href="{{url_for('auth.logout') }}">Logout</a></li>
+            <li class="nav-li"><a class="nav-a" href="{{url_for('main.home') }}">My profile</a></li>
+
+        </div>
+    </nav>
+
     <body>
         <h3>Journal</h3>
         <hr/>
@@ -16,13 +26,12 @@
         {%- endfor %}
         <div>
             <a href="{{ url_for('main.new') }}"><button type="button" class="button">New entry:</button></a>
-            <a href="{{ url_for('auth.logout') }}"><button type="button" class="button">Logout</button></a>
-            
         </div>
         
         {% for jrnl_entry in journal %}
             <div class="rounded">
                 <!-- The way these display is not in the proper order. I might have to change this on the database level -->
+                <!-- I would like to make it so that these can grow in steps. ie, there is a set height, and it can be 1 ,2, or 3 height so that they fit better -->
                 <h4 class="entry">{{ jrnl_entry.title }}</h4> 
                 <p class="entry">{{ jrnl_entry.time }}</p>
                 <p class="entry">{{ jrnl_entry.entry }}</p>
@@ -34,5 +43,4 @@
         <p style="font-size: smaller; text-align: center; color: white;">© Vivian Hafener 2021</p>
         </footer>
     </div>
-    
 </html>
