@@ -5,7 +5,7 @@ The purpose of this project is to create a web application that allows users to 
 Current TO:DO:
 Style:
 * Add CSS to flashed messages on every page
-* Rework the style of the homepage to match the rest of the site and retain responsive design principles
+* Rework the style of the homepage to match the rest of the site and retain responsive design principles, rewrite the remote css
 
 Minor functionality:
 * Add a button that redirects to the signup page from login >>> This will be done once I set up the new navbar
