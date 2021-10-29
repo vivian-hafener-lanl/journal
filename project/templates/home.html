@@ -2,19 +2,21 @@
 <html lang="en">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head>
-        <title>Home - Journal</title>
-        <link rel="stylesheet" type="text/css" href="/static/style.css"/>
-    </head>
-    <!-- Add CSS GRID to the above, along with mediaqueries -->
-    <nav>
-        <!-- This works for now, convert to a collapsed sidebar menu -->
-        <div class="nav-ul">
-            <li class="nav-li"><a class="nav-a" href="{{url_for('auth.logout') }}">Logout</a></li>
-            <li class="nav-li"><a class="nav-a" href="{{url_for('main.home') }}">My profile</a></li>
+    <div class="grid-container">
+        <head>
+            <title>Home - Journal</title>
+            <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+        </head>
+        <!-- Add CSS GRID to the above, along with mediaqueries -->
+        <nav>
+            <!-- This works for now, convert to a collapsed sidebar menu -->
+            <div class="nav-ul">
+                <li class="nav-li"><a class="nav-a" href="{{url_for('auth.logout') }}">Logout</a></li>
+                <li class="nav-li"><a class="nav-a" href="{{url_for('main.home') }}">My profile</a></li>
 
-        </div>
-    </nav>
+            </div>
+        </nav>
+    </div>
     <body>
         <!-- Make this so it says name's journal -->
         <h3>{{ name }}'s Journal</h3>

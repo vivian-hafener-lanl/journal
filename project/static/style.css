@@ -33,6 +33,14 @@
     background-color: #FF7D00;
 }
 
+/* CSS GRID stuff */
+
+.grid-container {
+    display: grid;
+}
+
+
+
 /* General stuff */
 
 label {
