@@ -8,7 +8,6 @@ Style:
 * Rework the style of the homepage to match the rest of the site and retain responsive design principles, rewrite the remote css
 
 Minor functionality:
-* Finish implementing CSS grid for the homepage header
 
 
 Major functionality:
