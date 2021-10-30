@@ -10,11 +10,11 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #15616D;
+    background-color: #3e3e42;
 }
 .nav-li {
-    float: left;
-    background-color: #15616D;
+    float: right;
+    background-color: #3e3e42;
 }
 
 .nav-li .nav-a { 
@@ -23,7 +23,7 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    background-color: #15616D;
+    background-color: #3e3e42;
 }
 .nav-li .nav-a:hover:not(.active) {
     background-color: #111;
