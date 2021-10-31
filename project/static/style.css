@@ -5,9 +5,9 @@
 
 /* Navbar stuff */
 
-.message {
-    
-}
+.notification:not(:last-child),
+
+.notification.is-danger{background-color:#ff3860;color:#fff}
 
 .nav-ul {
     list-style-type: none;
