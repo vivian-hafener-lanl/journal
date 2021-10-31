@@ -23,7 +23,7 @@
 
         {%- for message in get_flashed_messages() %}
         <!-- I should add some css and style to the flashed messages -->
-        {{ message }}
+        <span class="message">{{ message }}</span>
         {%- endfor %}
         <div>
             <a href="{{ url_for('main.new') }}"><button type="button" class="button">New entry:</button></a>
