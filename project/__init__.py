@@ -11,13 +11,15 @@ jrnl_db = SQLAlchemy() # Does this work? I guess I'll find out
 # Is this where it needs to be? IDK
 class journal(db.Model):
     id = jrnl_db.Column('entry_id', jrnl_db.Integer, primary_key = True)
-    time = jrnl_db.Column(jrnl_db.String(50))
+    user_id = jrnl_db.Column(jrnl_db.String(50)) # This might be able to be handled differently
     title = jrnl_db.Column(jrnl_db.String(100))
+    time = jrnl_db.Column(jrnl_db.String(50))
     entry = jrnl_db.Column(jrnl_db.String(200))
 
-    def __init__(self, time, title, entry):
-        self.time = time
+    def __init__(self, user_id, time, title, entry):
+        self.user_id = user_id
         self.title = title
+        self.time = time
         self.entry = entry
 
 def create_app():

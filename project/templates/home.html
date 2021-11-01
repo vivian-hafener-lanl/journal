@@ -29,7 +29,7 @@
             <a href="{{ url_for('main.new') }}"><button type="button" class="button">New entry:</button></a>
         </div>
         
-        {% for jrnl_entry in journal %}
+        {% for jrnl_entry in (journal for journal in entry if User.id == jrnl_entry.user_id) %}
             <div class="rounded">
                 <!-- The way these display is not in the proper order. I might have to change this on the database level -->
                 <!-- I would like to make it so that these can grow in steps. ie, there is a set height, and it can be 1 ,2, or 3 height so that they fit better -->

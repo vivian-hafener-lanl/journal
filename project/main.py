@@ -4,6 +4,7 @@ from flask import Blueprint, render_template, request, flash, url_for, redirect
 from flask_login import login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from . import journal, jrnl_db
+from .models import User
 
 main = Blueprint('main', __name__)
 
@@ -23,9 +24,8 @@ def new():
         if not request.form['title'] or not request.form['time'] or not request.form['entry']:
             flash('Please enter something in each field', 'error')
         else:
-            jrnl_entry = journal(request.form['title'], request.form['time'], request.form['entry'])
+            jrnl_entry = journal(User.id, request.form['title'], request.form['time'], request.form['entry'])
 
-            # Does this import actually work?
             jrnl_db.session.add(jrnl_entry)
             jrnl_db.session.commit()
             flash('Entry added to journal')
