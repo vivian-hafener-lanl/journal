@@ -2,6 +2,63 @@
     background-color: #3e3e42;
 } */
 
+
+/* Navbar stuff */
+
+.notification:not(:last-child),
+
+.notification.is-danger{background-color:#ff3860;color:#fff}
+
+.nav-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #3e3e42;
+}
+.nav-li {
+    float: right;
+    background-color: #3e3e42;
+}
+
+.nav-li .nav-a { 
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: #3e3e42;
+}
+.nav-li .nav-a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #FF7D00;
+}
+
+/* CSS GRID stuff */
+
+.grid-container {
+    display: grid;
+}
+
+head {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+nav {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+/* General stuff */
+
 label {
     color: white;
 }

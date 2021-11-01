@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="grid-container">
+        <head>
+            <title>Home - Journal</title>
+            <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+            <h3>{{ name }}'s Journal</h3>
+
+        </head>
+        <nav>
+            <!-- This works for now, though I might also just be able to use buttons if it looks fine on mobile too -->
+            <div class="nav-ul">
+                <li class="nav-li"><a class="nav-a" href="{{url_for('auth.logout') }}">Logout</a></li>
+                <li class="nav-li"><a class="nav-a" href="{{url_for('main.home') }}">My profile</a></li>
+            </div>
+        </nav>
+    </div>
+    <body>
+        <!-- Make this so it says name's journal -->
+        <hr/>
+
+        {%- for message in get_flashed_messages() %}
+        <!-- I should add some css and style to the flashed messages -->
+        <div class="notification is-danger">{{ message }}</div>
+        {%- endfor %}
+        <div>
+            <a href="{{ url_for('main.new') }}"><button type="button" class="button">New entry:</button></a>
+        </div>
+        
+        {% for jrnl_entry in journal %}
+            <div class="rounded">
+                <!-- The way these display is not in the proper order. I might have to change this on the database level -->
+                <!-- I would like to make it so that these can grow in steps. ie, there is a set height, and it can be 1 ,2, or 3 height so that they fit better -->
+                <h4 class="entry">{{ jrnl_entry.title }}</h4> 
+                <p class="entry">{{ jrnl_entry.time }}</p>
+                <p class="entry">{{ jrnl_entry.entry }}</p>
+            </div>
+        {% endfor %}
+    </body>
+    <div style="clear: both;">
+        <footer>
+        <p style="font-size: smaller; text-align: center; color: white;">© Vivian Hafener 2021</p>
+        </footer>
+    </div>
+</html>
