@@ -29,4 +29,4 @@ def new():
             db.session.commit()
             flash('Entry added to journal')
             return redirect(url_for('main.home'))
-    return render_template('new.html')
+    return render_template('new.html', name=current_user.name)
