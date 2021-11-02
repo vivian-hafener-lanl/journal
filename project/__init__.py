@@ -6,16 +6,18 @@ from flask_login import LoginManager
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
-jrnl_db = SQLAlchemy() # Does this work? I guess I'll find out
+jrnl_db = SQLAlchemy() # I don't think I actually need this
 
-# Is this where it needs to be? IDK
+# This should totally be moved to models. I also don't think it needs to be jrnl_db
 class journal(db.Model):
     id = jrnl_db.Column('entry_id', jrnl_db.Integer, primary_key = True)
+    u_id = jrnl_db.Column(jrnl_db.Integer)
     title = jrnl_db.Column(jrnl_db.String(100))
     time = jrnl_db.Column(jrnl_db.String(50))
     entry = jrnl_db.Column(jrnl_db.String(200))
 
-    def __init__(self, title, time, entry):
+    def __init__(self, u_id, title, time, entry):
+        self.title = u_id
         self.title = title
         self.time = time
         self.entry = entry

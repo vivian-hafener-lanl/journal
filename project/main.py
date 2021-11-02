@@ -24,7 +24,7 @@ def new():
         if not request.form['title'] or not request.form['time'] or not request.form['entry']:
             flash('Please enter something in each field', 'error')
         else:
-            jrnl_entry = journal(request.form['title'], request.form['time'], request.form['entry'])
+            jrnl_entry = journal(current_user.id, request.form['title'], request.form['time'], request.form['entry'])
 
             jrnl_db.session.add(jrnl_entry)
             jrnl_db.session.commit()
