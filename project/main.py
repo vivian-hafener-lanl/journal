@@ -3,7 +3,7 @@
 from flask import Blueprint, render_template, request, flash, url_for, redirect
 from flask_login import login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
-from . import journal, jrnl_db
+from . import journal, db
 from .models import User
 
 main = Blueprint('main', __name__)
@@ -25,8 +25,8 @@ def new():
             flash('Please enter something in each field', 'error')
 
         else:
-            jrnl_db.session.add(journal(current_user.id, request.form['title'], request.form['time'], request.form['entry']))
-            jrnl_db.session.commit()
+            db.session.add(journal(current_user.id, request.form['title'], request.form['time'], request.form['entry']))
+            db.session.commit()
             flash('Entry added to journal')
             return redirect(url_for('main.home'))
     return render_template('new.html')
