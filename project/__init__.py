@@ -17,7 +17,7 @@ class journal(db.Model):
     entry = jrnl_db.Column(jrnl_db.String(200))
 
     def __init__(self, u_id, title, time, entry):
-        self.title = u_id
+        self.u_id = u_id
         self.title = title
         self.time = time
         self.entry = entry
