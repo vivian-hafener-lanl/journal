@@ -30,3 +30,8 @@ def new():
             flash('Entry added to journal')
             return redirect(url_for('main.home'))
     return render_template('new.html', name=current_user.name)
+
+@main.route ('/profile')
+@login_required
+def profile():
+    return render_template('profile.html', name=current_user.name, email=current_user.email)

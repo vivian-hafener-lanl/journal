@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <div class="grid-container">
+        <head>
+            <title>Home - Journal</title>
+            <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+            <a href="{{ url_for ('main.home') }}"><h3>{{ name }}'s Journal</h3></a>
+
+        </head>
+        <nav>
+            <div class="nav-ul">
+                <li class="nav-li"><a class="nav-a" href="{{url_for('auth.logout') }}">Logout</a></li>
+            </div>
+        </nav>
+    </div>
+
+    <body>
+        <hr/>
+        <h3 style="text-align: center;">Welcome {{name}}.</h3>
+        <p style="color: white;">Your email address is: {{ email }}</p>
+        <p style="color: white;">Your username is: {{name}}</p>
+        <!-- <p style="color: white;">You have {{num_entries}} in your journal.</p> -->
+    </body>
+</html>

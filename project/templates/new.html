@@ -7,13 +7,13 @@
         <head>
             <title>New entry - Journal</title>
             <link rel="stylesheet" type="text/css" href="/static/style.css"/>
-            <a href="{{ url_for ('main.home') }}"><h3>{{ name }}'s Journal - New Entry</h3></a>
+            <a href="{{ url_for ('main.home') }}"><h3>{{ name }}'s Journal</h3></a>
 
         </head>
         <nav>
             <div class="nav-ul">
                 <li class="nav-li"><a class="nav-a" href="{{url_for('auth.logout') }}">Logout</a></li>
-                <li class="nav-li"><a class="nav-a" href="{{url_for('main.home') }}">My profile</a></li>
+                <li class="nav-li"><a class="nav-a" href="{{url_for('main.profile') }}">My profile</a></li>
             </div>
         </nav>
     </div>
@@ -24,7 +24,7 @@
             <hr/>
         
             {%- for category, message in get_flashed_messages(with_categories = true) %}
-            <div class = "alert alert-danger">
+            <div class = "notification is-danger">
                 {{ message }}
             </div>
             {%- endfor %}
