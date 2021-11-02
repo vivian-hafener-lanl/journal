@@ -4,7 +4,7 @@ from flask import Blueprint, render_template, request, flash, url_for, redirect
 from flask_login import login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from . import journal, db
-from .models import User
+from .models import User, journal
 
 main = Blueprint('main', __name__)
 
