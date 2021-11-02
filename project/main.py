@@ -25,10 +25,7 @@ def new():
             flash('Please enter something in each field', 'error')
 
         else:
-            user_identifier = current_user.id
-            jrnl_entry = journal(user_identifier, request.form['title'], request.form['time'], request.form['entry'])
-
-            jrnl_db.session.add(jrnl_entry)
+            jrnl_db.session.add(journal(current_user.id, request.form['title'], request.form['time'], request.form['entry']))
             jrnl_db.session.commit()
             flash('Entry added to journal')
             return redirect(url_for('main.home'))
