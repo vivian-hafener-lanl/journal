@@ -5,7 +5,7 @@ from flask import Blueprint, render_template, request, flash, url_for, redirect
 from flask_login import login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from . import db
-from .models import User, journal
+from .models import User, Journal
 
 main = Blueprint('main', __name__)
 
@@ -16,7 +16,7 @@ def index():
 @main.route('/home')
 @login_required
 def home():
-    return render_template('home.html', name=current_user.name, u_id = current_user.id, journal = journal.query.all() )
+    return render_template('home.html', name=current_user.name, u_id = current_user.id, Journal = Journal.query.all() )
 
 @main.route('/profile')
 @login_required
@@ -31,7 +31,7 @@ def new():
             flash('Please enter something in each field', 'error')
 
         else:
-            db.session.add(journal(current_user.id, request.form['title'], request.form['time'], request.form['entry']))
+            db.session.add(Journal(current_user.id, request.form['title'], request.form['time'], request.form['entry']))
             db.session.commit()
             flash('Entry added to journal')
             return redirect(url_for('main.home'))

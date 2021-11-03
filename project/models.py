@@ -9,7 +9,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(100))
     name = db.Column(db.String(1000))
 
-class journal(db.Model):
+class Journal(db.Model):
     id = db.Column('entry_id', db.Integer, primary_key = True)
     u_id = db.Column(db.Integer)
     title = db.Column(db.String(100))
