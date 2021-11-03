@@ -10,19 +10,16 @@
 
         </head>
         <nav>
-            <!-- This works for now, though I might also just be able to use buttons if it looks fine on mobile too -->
             <div class="nav-ul">
                 <li class="nav-li"><a class="nav-a" href="{{url_for('auth.logout') }}">Logout</a></li>
-                <li class="nav-li"><a class="nav-a" href="{{url_for('main.home') }}">My profile</a></li>
+                <li class="nav-li"><a class="nav-a" href="{{url_for('main.profile') }}">My profile</a></li>
             </div>
         </nav>
     </div>
     <body>
-        <!-- Make this so it says name's journal -->
         <hr/>
 
         {%- for message in get_flashed_messages() %}
-        <!-- I should add some css and style to the flashed messages -->
         <div class="notification is-danger">{{ message }}</div>
         {%- endfor %}
         <div>
