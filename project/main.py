@@ -1,5 +1,6 @@
 # main.py
 
+from os import name
 from flask import Blueprint, render_template, request, flash, url_for, redirect
 from flask_login import login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
@@ -15,7 +16,7 @@ def index():
 @main.route('/home')
 @login_required
 def home():
-    return render_template('home.html', name=current_user.name, u_id = current_user.id, journal = journal.query.all() ) # show_all doesn't use name yet but I'll add it. Also need to figure out how to only access the data from the individual user
+    return render_template('home.html', name=current_user.name, u_id = current_user.id, journal = journal.query.all() )
 
 @main.route('/profile')
 @login_required
@@ -34,4 +35,4 @@ def new():
             db.session.commit()
             flash('Entry added to journal')
             return redirect(url_for('main.home'))
-    return render_template('new.html')
+    return render_template('new.html', name = current_user.name)

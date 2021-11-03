@@ -58,7 +58,7 @@ head {
 } */
 
 span {
-    grid-column-start: 3;
+    grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 1;

@@ -3,6 +3,15 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+          <a href="{{url_for('main.home')}}">Home</a>
+          <a href="{{url_for('main.profile')}}">Profile</a>
+          <a href="{{url_for('auth.logout')}}">Logout</a>
+        </div>
+    </div>
+
     <div class="grid-container">
         <head>
             <title>New entry - Journal</title>
@@ -10,12 +19,8 @@
             <a href="{{ url_for ('main.home') }}"><h3>{{ name }}'s Journal</h3></a>
 
         </head>
-        <nav>
-            <div class="nav-ul">
-                <li class="nav-li"><a class="nav-a" href="{{url_for('auth.logout') }}">Logout</a></li>
-                <li class="nav-li"><a class="nav-a" href="{{url_for('main.profile') }}">My profile</a></li>
-            </div>
-        </nav>
+        <span style="font-size:30px;cursor:pointer;float:right;color: white;" onclick="openNav()">&#9776;</span>
+
     </div>
 
 
@@ -43,4 +48,14 @@
             <p style="font-size: smaller; text-align: center; color: white;">© Vivian Hafener 2021</p>
         </footer>
     </main>
+
+    <script>
+        function openNav() {
+          document.getElementById("myNav").style.height = "100%";
+        }
+        
+        function closeNav() {
+          document.getElementById("myNav").style.height = "0%";
+        }
+        </script>
 </html>
