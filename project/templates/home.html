@@ -6,13 +6,11 @@
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
-          <a href="#">About</a>
-          <a href="#">Services</a>
-          <a href="#">Clients</a>
-          <a href="#">Contact</a>
+          <a href="{{url_for('main.home')}}">Home</a>
+          <a href="{{url_for('main.profile')}}">Profile</a>
+          <a href="{{url_for('auth.logout')}}">Logout</a>
         </div>
     </div>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
 
     <div class="grid-container">
         <head>
@@ -21,12 +19,10 @@
             <h3>{{ name }}'s Journal</h3>
 
         </head>
-        <nav>
-            <div class="nav-ul">
-                <li class="nav-li"><a class="nav-a" href="{{url_for('auth.logout') }}">Logout</a></li>
-                <li class="nav-li"><a class="nav-a" href="{{url_for('main.profile') }}">My profile</a></li>
-            </div>
-        </nav>
+
+        <!-- Float this right -->
+    <span style="font-size:30px;cursor:pointer;float:right;color: white;" onclick="openNav()">&#9776;</span>
+
     </div>
     <body>
         <hr/>

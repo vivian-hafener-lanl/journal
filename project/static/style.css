@@ -50,7 +50,14 @@ head {
     grid-row-end: 1;
 }
 
-nav {
+/* nav {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 1;
+} */
+
+span {
     grid-column-start: 3;
     grid-column-end: 5;
     grid-row-start: 1;
