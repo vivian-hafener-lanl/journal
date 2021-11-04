@@ -6,6 +6,7 @@ from flask_login import login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from . import db
 from .models import User, Journal
+from datetime import datetime
 
 main = Blueprint('main', __name__)
 
@@ -27,11 +28,11 @@ def profile():
 @login_required
 def new():
     if request.method == 'POST':
-        if not request.form['title'] or not request.form['time'] or not request.form['entry']:
+        if not request.form['title'] or not request.form['entry']:
             flash('Please enter something in each field', 'error')
 
         else:
-            db.session.add(Journal(current_user.id, request.form['title'], request.form['time'], request.form['entry']))
+            db.session.add(Journal(current_user.id, request.form['title'], datetime.today(), request.form['entry']))
             db.session.commit()
             flash('Entry added to journal')
             return redirect(url_for('main.home'))

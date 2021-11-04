@@ -13,7 +13,7 @@ class Journal(db.Model):
     id = db.Column('entry_id', db.Integer, primary_key = True)
     u_id = db.Column(db.Integer)
     title = db.Column(db.String(100))
-    time = db.Column(db.String(50))
+    time = db.Column(db.DateTime())
     entry = db.Column(db.String(200))
 
     def __init__(self, u_id, title, time, entry):
