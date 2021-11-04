@@ -37,7 +37,7 @@
         {% for jrnl_entry in Journal if jrnl_entry.u_id == current_user.id %}
             <div class="rounded">
                 <h4 class="entry">{{ jrnl_entry.title }}</h4> 
-                <p class="entry">{{ jrnl_entry.time }}</p>
+                <p class="entry">Written on {{ jrnl_entry.time.date().strftime("%d %B, %Y") }} at {{ jrnl_entry.time.time().strftime("%H:%M:%S") }}</p>
                 <p class="entry">{{ jrnl_entry.entry }}</p>
             </div>
         {% endfor %}
