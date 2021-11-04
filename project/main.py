@@ -17,7 +17,8 @@ def index():
 @main.route('/home')
 @login_required
 def home():
-    return render_template('home.html', name=current_user.name, u_id = current_user.id, Journal = Journal.query.all() )
+    # The way the next line is rendered is probably a security issue. I should use a specific query instead of this one. 
+    return render_template('home.html', name=current_user.name, u_id = current_user.id, Journal = reversed(Journal.query.all()))
 
 @main.route('/profile')
 @login_required
