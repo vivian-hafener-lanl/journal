@@ -36,9 +36,16 @@
         
         {% for jrnl_entry in Journal if jrnl_entry.u_id == current_user.id %}
             <div class="rounded">
+                <div class="dropdown" style="float: right;">
+                    <button onclick="myFunction()" class="dropbtn">...</button>
+                    <div id="myDropdown" class="dropdown-content">
+                    <a href="#home">Delete Entry {{jrnl_entry.id}}?</a>
+                    </div>
+                </div>
                 <h4 class="entry">{{ jrnl_entry.title }}</h4> 
                 <p class="entry">{{ jrnl_entry.time.date().strftime("%m/%d/%Y") }} at {{ jrnl_entry.time.time().strftime("%H:%M:%S") }}</p>
                 <p class="entry">{{ jrnl_entry.entry }}</p>
+
             </div>
         {% endfor %}
 
@@ -57,6 +64,24 @@
         function closeNav() {
           document.getElementById("myNav").style.height = "0%";
         }
-        </script>
+
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+            }
+        }
+        }
+    </script>
 
 </html>
