@@ -165,12 +165,13 @@ h3 {
 
 @media only screen and (max-width: 600){
     .rounded {
-        max-width: 100%;
+        width: 100%;
     }
 }
 @media only screen and (min-width: 1000px) {
     .rounded {
-        max-width: 50%;
+        /* This next line is imprecise and should be fixed. Currently 50 % activates float due to margins */
+        width: 45%;
         margin: 0.7em;
         float: left;
         /* Aesthetically I think float works ok here, but I was originally thinking about doing 50/50 */
