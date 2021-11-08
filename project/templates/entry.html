@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+          <a href="{{url_for('main.home')}}">Home</a>
+          <a href="{{url_for('main.profile')}}">Profile</a>
+          <a href="{{url_for('auth.logout')}}">Logout</a>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <head>
+            <title>Home - Journal</title>
+            <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+            <h3>{{ name }}'s Journal</h3>
+
+        </head>
+        <!-- Float this right using flexbox -->
+    <span style="font-size:30px;cursor:pointer;float:right;color: white;" onclick="openNav()">&#9776;</span>
+    </div>
+    <body>
+        <hr/>
+        {% for entry in Journal if entry.id = entry_id %}
+        <div class="rounded">
+            <h4 class="entry">{{ entry.title }}</h4> 
+            <p class="entry">{{ entry.time.date().strftime("%m/%d/%Y") }} at {{ jrnl_entry.time.time().strftime("%H:%M:%S") }}</p>
+            <p class="entry">{{ entry.entry }}</p>
+        </div>
+        {% endfor %}
+    </body>
+
+    <script>
+        function openNav() {
+          document.getElementById("myNav").style.height = "100%";
+        }
+        
+        function closeNav() {
+          document.getElementById("myNav").style.height = "0%";
+        }
+    </script>
+</html>

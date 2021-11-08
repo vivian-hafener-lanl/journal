@@ -38,3 +38,8 @@ def new():
             flash('Entry added to journal')
             return redirect(url_for('main.home'))
     return render_template('new.html', name = current_user.name)
+
+@main.route('/entries/<username>/<entry_id>')
+@login_required
+def entries():
+    return render_template('entry.html', username = current_user.name, entry_id=None) # Entry_id should probably be something else, but I don't know what it should be 
