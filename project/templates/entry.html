@@ -16,7 +16,7 @@
         <head>
             <title>Home - Journal</title>
             <link rel="stylesheet" type="text/css" href="/static/style.css"/>
-            <h3>{{ name }}'s Journal</h3>
+            <h3>{{ username }}'s Journal</h3>
 
         </head>
         <!-- Float this right using flexbox -->
@@ -24,10 +24,10 @@
     </div>
     <body>
         <hr/>
-        {% for entry in Journal if entry.id = entry_id %}
+        {% for entry in Journal if entry.id == entry_id %}
         <div class="rounded">
             <h4 class="entry">{{ entry.title }}</h4> 
-            <p class="entry">{{ entry.time.date().strftime("%m/%d/%Y") }} at {{ jrnl_entry.time.time().strftime("%H:%M:%S") }}</p>
+            <p class="entry">{{ entry.time.date().strftime("%m/%d/%Y") }} at {{ entry.time.time().strftime("%H:%M:%S") }}</p>
             <p class="entry">{{ entry.entry }}</p>
         </div>
         {% endfor %}

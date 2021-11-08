@@ -36,12 +36,6 @@
         
         {% for jrnl_entry in Journal if jrnl_entry.u_id == current_user.id %}
             <div class="rounded">
-                <!-- <div class="dropdown" style="float: right;">
-                    <button onclick="myFunction()" class="dropbtn">...</button>
-                    <div id="myDropdown" class="dropdown-content">
-                    <a href="#home">Delete Entry {{jrnl_entry.id}}?</a>
-                    </div>
-                </div> -->
                 <span style="float: right;"><a href="{{ url_for ('main.entries', username = name, entry_id=jrnl_entry.id)}}"><button class="dropbtn">...</button></a></span>
                 <h4 class="entry">{{ jrnl_entry.title }}</h4> 
                 <p class="entry">{{ jrnl_entry.time.date().strftime("%m/%d/%Y") }} at {{ jrnl_entry.time.time().strftime("%H:%M:%S") }}</p>
