@@ -24,6 +24,7 @@
     </div>
     <body>
         <hr/>
+        <p>{{entry_id}}</p>
         {% for entry in Journal if entry.id == entry_id %}
         <div class="rounded">
             <h4 class="entry">{{ entry.title }}</h4> 

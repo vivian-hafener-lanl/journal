@@ -42,4 +42,4 @@ def new():
 @main.route('/entries/<username>/<entry_id>')
 @login_required
 def entries(username, entry_id):
-    return render_template('entry.html', username = current_user.name, entry_id=entry_id, Journal = Journal.query.all()) # Entry_id should probably be something else, but I don't know what it should be 
+    return render_template('entry.html', username = current_user.name, entry_id=int(entry_id), Journal = Journal.query.all()) # Entry_id should probably be something else, but I don't know what it should be 
