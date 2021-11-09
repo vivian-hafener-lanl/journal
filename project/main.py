@@ -44,7 +44,9 @@ def new():
 def entries(username, entry_id):
     if request.method == 'POST':
         if request.form['delete_button'] == 'delete_entry':
-            db.session.execute('delete from journal where entry_id = %d',entry_id) # this line won't work
+            Journal.query.filter_by(id = entry_id).delete()
+            # db.session.delete()
             db.session.commit()
             flash('Entry deleted')
+            return redirect(url_for('main.home'))
     return render_template('entry.html', username = current_user.name, entry_id=int(entry_id), Journal = Journal.query.all()) # Entry_id should probably be something else, but I don't know what it should be 
