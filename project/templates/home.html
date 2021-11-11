@@ -34,12 +34,12 @@
             <a href="{{ url_for('main.new') }}"><button type="button" class="button">New entry:</button></a>
         </div>
         {% for entry in Journal if entry.u_id == current_user.id %}
-            <div class="rounded">
-                <span style="float: right;"><a href="{{ url_for ('main.entries', username = name, entry_id=entry.id)}}"><button class="dropbtn">...</button></a></span>
+            <a href="{{ url_for ('main.entries', username = name, entry_id=entry.id)}}"><div class="rounded">
+                <!-- <span style="float: right;"><button class="dropbtn">...</button></a></span> -->
                 <h4 class="entry">{{ entry.title }}</h4> 
                 <p class="entry">{{ entry.time.date().strftime("%m/%d/%Y") }} at {{ entry.time.time().strftime("%H:%M:%S") }}</p>
                 <p class="entry">{{ entry.entry }}</p>
-            </div>
+            </div></a>
         {% endfor %}
 
     </body>
