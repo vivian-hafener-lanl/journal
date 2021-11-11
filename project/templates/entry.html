@@ -26,9 +26,9 @@
         <hr/>
         {% for entry in Journal if entry.id == entry_id %}
         <div class="rounded">
-            <h4 class="entry">{{ entry.title }}</h4> 
-            <p class="entry">{{ entry.time.date().strftime("%m/%d/%Y") }} at {{ entry.time.time().strftime("%H:%M:%S") }}</p>
-            <p class="entry">{{ entry.entry }}</p>
+            <h4 class="single_entry">{{ entry.title }}</h4> 
+            <p class="single_entry">{{ entry.time.date().strftime("%m/%d/%Y") }} at {{ entry.time.time().strftime("%H:%M:%S") }}</p>
+            <p class="single_entry">{{ entry.entry }}</p>
         </div>
         <form action = "{{ request.path }}" method = "post">
             <input class="button" type="submit" name="delete_button" value="delete_entry">

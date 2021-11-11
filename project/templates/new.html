@@ -25,28 +25,35 @@
 
 
     <main>
-        <body>
-            <hr/>
+        <div class="page">
+            <body>            
+                {%- for category, message in get_flashed_messages(with_categories = true) %}
+                <div class = "notification is-danger">
+                    {{ message }}
+                </div>
+                {%- endfor %}
+                <!-- These could fit the theme better, but for now all functionality is there -->
+                <form action = "{{ request.path }}" method = "post">
+                    <label class="field fieldv_1" for = "title">
+                    <input class="field__input" type = "text" name = "title" placeholder = "Title" >
+                    <span class="field__label-wrap">
+                        <span class="field__label">Title</span>
+                    </span></label><br>
+
+                    <label class="field fieldv_1" for = "entry">
+                    <textarea class="field__input" id="text" name="entry" placeholder="entry" rows="12" cols="50"></textarea><br>
+                    <span class="field__label-wrap">
+                        <span class="field__label">Entry</span>
+                    </span></label><br>
+                    <input class="button" type = "submit" value = "Submit" />
+                    
+                </form>
+            </body>
+            <footer>
+                <p style="font-size: smaller; text-align: center; color: white;">© Vivian Hafener 2021</p>
+            </footer>
+        </div>
         
-            {%- for category, message in get_flashed_messages(with_categories = true) %}
-            <div class = "notification is-danger">
-                {{ message }}
-            </div>
-            {%- endfor %}
-            <!-- These could fit the theme better, but for now all functionality is there -->
-            <form action = "{{ request.path }}" method = "post">
-                <label for = "title">Title</label><br>
-                <input type = "text" name = "title" placeholder = "Title" /><br>
-                <!-- <label for = "time">Time and Date</label><br>
-                <input type = "text" name = "time" placeholder = "Time" /><br> -->
-                <label for = "entry">Entry</label><br>
-                <textarea id="text" name="entry" placeholder="entry" rows="12" cols="50"></textarea><br>
-                <input class="button" type = "submit" value = "Submit" />
-            </form>
-        </body>
-        <footer>
-            <p style="font-size: smaller; text-align: center; color: white;">© Vivian Hafener 2021</p>
-        </footer>
     </main>
 
     <script>
