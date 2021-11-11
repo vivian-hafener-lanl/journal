@@ -41,6 +41,9 @@ def new():
 
 @main.route('/entries/<username>/<entry_id>', methods = ['GET', 'POST'])
 @login_required
+
+# add an if statement to check <username> against current_user.name
+
 def entries(username, entry_id):
     if request.method == 'POST':
         if request.form['delete_button'] == 'delete_entry':
