@@ -28,14 +28,22 @@
     <body>
         <hr/>
         {% for entry in Journal if entry.id == entry_id %}
-        <div class="rounded">
+        <div class="centered_button">
+             <div class="single_entry_rounded">
             <h4 class="single_entry">{{ entry.title }}</h4> 
             <p class="single_entry">{{ entry.time.date().strftime("%m/%d/%Y") }} at {{ entry.time.time().strftime("%H:%M:%S") }}</p>
             <p class="single_entry">{{ entry.entry }}</p>
         </div>
-        <form action = "{{ request.path }}" method = "post">
-            <input class="button" type="submit" name="delete_button" value="delete_entry">
-        </form>
+        </div>
+
+       
+    </br>
+        <div class="centered_button">
+            <form action = "{{ request.path }}" method = "post">
+                <input class="button" type="submit" name="delete_button" value="delete_entry">
+            </form>
+        </div>
+        
         {% endfor %}
     </body>
 
