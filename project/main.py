@@ -17,7 +17,6 @@ def index():
 @main.route('/home')
 @login_required
 def home():
-    # The way the next line is rendered is probably a security issue. I should use a specific query instead of this one. 
     return render_template('home.html', name=current_user.name, u_id = current_user.id, Journal = reversed(Journal.query.all()))
 
 @main.route('/profile')
@@ -42,8 +41,6 @@ def new():
 @main.route('/entries/<username>/<entry_id>', methods = ['GET', 'POST'])
 @login_required
 
-# add an if statement to check <username> against current_user.name
-
 def entries(username, entry_id):
     if request.method == 'POST':
         if request.form['delete_button'] == 'delete_entry':
@@ -52,4 +49,8 @@ def entries(username, entry_id):
             db.session.commit()
             flash('Entry deleted')
             return redirect(url_for('main.home'))
-    return render_template('entry.html', username = current_user.name, entry_id=int(entry_id), Journal = Journal.query.all()) # Entry_id should probably be something else, but I don't know what it should be 
+    if username == current_user.name:
+        return render_template('entry.html', username = current_user.name, entry_id=int(entry_id), Journal = Journal.query.all()) # Entry_id should probably be something else, but I don't know what it should be 
+    elif username != current_user.name:
+        flash('You do not have access to this resource!')
+        return render_template('home.html', name=current_user.name, u_id = current_user.id, Journal = reversed(Journal.query.all()))
