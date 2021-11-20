@@ -50,7 +50,7 @@ def entries(username, entry_id):
             flash('Entry deleted')
             return redirect(url_for('main.home'))
     if username == current_user.name:
-        return render_template('entry.html', username = current_user.name, entry_id=int(entry_id), Journal = Journal.query.all()) # Entry_id should probably be something else, but I don't know what it should be 
+        return render_template('entry.html', username = current_user.name, entry_id=int(entry_id), Journal = Journal.query.all()) 
     elif username != current_user.name:
         flash('You do not have access to this resource!')
         return render_template('home.html', name=current_user.name, u_id = current_user.id, Journal = reversed(Journal.query.all()))
