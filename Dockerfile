@@ -11,8 +11,6 @@ ADD requirements.txt /project
 RUN pip install -r requirements.txt
 ADD . /project
 
-ENTRYPOINT ["python3", "project:project"]
-RUN pwd
-RUN ls
-RUN python3 project/run.py
+ENTRYPOINT ["python3"]
+CMD python3 project/run.py
 # CMD ["--bind=127.0.0.1:5000"]
