@@ -31,13 +31,21 @@
         <hr/>
 
         {%- for message in get_flashed_messages() %}
-        <div class="notification is-danger">{{ message }}</div>
+        <!-- <div class="notification is-danger">{{ message }}</div> -->
+
+        <div class="red_alert">
+            <span class="closebtn_alert" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ message}}
+        </div> 
+
         {%- endfor %}
+
+
         <div>
             <a href="{{ url_for('main.new') }}"><button type="button" class="button">New entry:</button></a>
         </div>
         {% for entry in Journal if entry.u_id == current_user.id %}
-            <a href="{{ url_for ('main.entries', username = name, entry_id=entry.id)}}"><div class="rounded">
+            <a href="{{ url_for ('main.entries', username = name, entry_id=entry.id)}}" style="color: black; text-decoration: none;"><div class="rounded">
                 <!-- <span style="float: right;"><button class="dropbtn">...</button></a></span> -->
                 <h4 class="entry">{{ entry.title }}</h4> 
                 <p class="entry">{{ entry.time.date().strftime("%m/%d/%Y") }} at {{ entry.time.time().strftime("%H:%M:%S") }}</p>

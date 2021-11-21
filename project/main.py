@@ -34,7 +34,7 @@ def new():
         else:
             db.session.add(Journal(current_user.id, request.form['title'], datetime.today(), request.form['entry']))
             db.session.commit()
-            flash('Entry added to journal')
+            flash('Entry successfully added to journal!')
             return redirect(url_for('main.home'))
     return render_template('new.html', name = current_user.name)
 
@@ -43,7 +43,7 @@ def new():
 
 def entries(username, entry_id):
     if request.method == 'POST':
-        if request.form['delete_button'] == 'delete_entry':
+        if request.form['delete_button'] == 'Delete entry':
             Journal.query.filter_by(id = entry_id).delete()
             # db.session.delete()
             db.session.commit()
@@ -52,5 +52,5 @@ def entries(username, entry_id):
     if username == current_user.name:
         return render_template('entry.html', username = current_user.name, entry_id=int(entry_id), Journal = Journal.query.all()) 
     elif username != current_user.name:
-        flash('You do not have access to this resource!')
+        flash('You do not have access to this resource! If you think you should be able to access this page, please contact your local systems administrator.')
         return render_template('home.html', name=current_user.name, u_id = current_user.id, Journal = reversed(Journal.query.all()))
