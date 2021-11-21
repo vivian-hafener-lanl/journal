@@ -19,8 +19,9 @@
             <a href="{{ url_for ('main.home') }}"><h3>{{ name }}'s Journal</h3></a>
 
         </head>
-        <span style="font-size:30px;cursor:pointer;float:right;color: white;" onclick="openNav()">&#9776;</span>
-
+        <span style="float: right;">
+            <span style="font-size:30px; cursor:pointer; float:right; color: white;" onclick="openNav()">&#9776;</span>
+        </span>
     </div>
 
 
@@ -28,9 +29,10 @@
         <div class="page">
             <body>            
                 {%- for category, message in get_flashed_messages(with_categories = true) %}
-                <div class = "notification is-danger">
-                    {{ message }}
-                </div>
+                <div class="red_alert">
+                    <span class="closebtn_alert" onclick="this.parentElement.style.display='none';">&times;</span>
+                    {{ message}}
+                </div> 
                 {%- endfor %}
                 <!-- ----------------------------------------------------------------------- -->
                 <!--              TODO:     Add some whitespace here                         -->
@@ -43,11 +45,14 @@
                     </span></label><br>
 
                     <label class="field fieldv_1" for = "entry">
-                    <textarea class="field__input" id="text" name="entry" placeholder="entry" rows="12" cols="50" style="color: white;"></textarea><br>
+                    <textarea class="field__input" id="text" name="entry" placeholder="entry" rows="12" cols="50" style="color: white; height: 300px;"></textarea><br>
                     <span class="field__label-wrap">
                         <span class="field__label">Entry</span>
                     </span></label><br>
-                    <input class="button" type = "submit" value = "Submit" />
+                    <div class="centered_button">
+                         <input class="button" type = "submit" value = "Submit" />
+                    </div>
+                   
                     
                 </form>
             </body>
