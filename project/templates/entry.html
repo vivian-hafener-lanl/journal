@@ -16,55 +16,44 @@
         <head>
             <title>Home - Journal</title>
             <link rel="stylesheet" type="text/css" href="/static/style.css"/>
-            <h3>{{ name }}'s Journal</h3>
+            <a href="{{ url_for ('run.home') }}" style="text-decoration: none;"><h3>{{ username }}'s Journal</h3></a>
 
         </head>
-
         <!-- Float this right using flexbox -->
         <span style="float: right;">
             <span style="font-size:30px; cursor:pointer; float:right; color: white;" onclick="openNav()">&#9776;</span>
         </span>
-    </div>
+        </div>
                     <!-- ----------------------------------------------------------------------- -->
                 <!--              TODO:     Add some whitespace here                         -->
                 <!-- ----------------------------------------------------------------------- -->
     <body>
         <hr/>
-
-        {%- for message in get_flashed_messages() %}
-        <!-- <div class="notification is-danger">{{ message }}</div> -->
-
-        <div class="red_alert">
-            <span class="closebtn_alert" onclick="this.parentElement.style.display='none';">&times;</span>
-            {{ message}}
-        </div> 
-
-        {%- endfor %}
-
-
-        <div>
-            <a href="{{ url_for('run.new') }}"><button type="button" class="button">New entry:</button></a>
+        {% for entry in Journal if entry.id == entry_id %}
+        <div class="centered_button">
+             <div class="single_entry_rounded">
+            <h4 class="single_entry">{{ entry.title }}</h4> 
+            <p class="single_entry">{{ entry.time.date().strftime("%m/%d/%Y") }} at {{ entry.time.time().strftime("%H:%M:%S") }}</p>
+            <p class="single_entry">{{ entry.entry }}</p>
         </div>
-        {% for entry in Journal if entry.u_id == current_user.id %}
-            <a href="{{ url_for ('run.entries', username = name, entry_id=entry.id)}}" style="color: black; text-decoration: none;"><div class="rounded">
-                <!-- <span style="float: right;"><button class="dropbtn">...</button></a></span> -->
-                <h4 class="entry">{{ entry.title }}</h4> 
-                <p class="entry">{{ entry.time.date().strftime("%m/%d/%Y") }} at {{ entry.time.time().strftime("%H:%M:%S") }}</p>
-                <p class="entry">{{ entry.entry }}</p>
-            </div></a>
-        {% endfor %}
+        </div>
 
+       
+    </br>
+        <div class="centered_button">
+            <form action = "{{ request.path }}" method = "post">
+                <input class="button" type="submit" name="delete_button" value="Delete entry">
+            </form>
+        </div>
+        
+        {% endfor %}
     </body>
-    <div style="clear: both;">
-        <footer>
-        <p style="font-size: smaller; text-align: center; color: white;">© Vivian Hafener 2021</p>
-        </footer>
-    </div>
 
     <script>
         function openNav() {
           document.getElementById("myNav").style.height = "100%";
         }
+        
         function closeNav() {
           document.getElementById("myNav").style.height = "0%";
         }

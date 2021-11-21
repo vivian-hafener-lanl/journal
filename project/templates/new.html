@@ -2,33 +2,74 @@
 <html lang = "en">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head>
-        <title>New entry - Journal</title>
-        <link rel="stylesheet" type="text/css" href="/static/style.css"/>
-    </head>
-    <main>
-        <body>
-            <h3>Journal</h3>
-            <hr/>
+
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+          <a href="{{url_for('run.home')}}">Home</a>
+          <a href="{{url_for('run.profile')}}">Profile</a>
+          <a href="{{url_for('auth.logout')}}">Logout</a>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <head>
+            <title>New entry - Journal</title>
+            <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+            <a href="{{ url_for ('run.home') }}"><h3>{{ name }}'s Journal</h3></a>
+
+        </head>
+        <span style="float: right;">
+            <span style="font-size:30px; cursor:pointer; float:right; color: white;" onclick="openNav()">&#9776;</span>
+        </span>
+    </div>
+
+
+    <run>
+        <div class="page">
+            <body>            
+                {%- for category, message in get_flashed_messages(with_categories = true) %}
+                <div class="red_alert">
+                    <span class="closebtn_alert" onclick="this.parentElement.style.display='none';">&times;</span>
+                    {{ message}}
+                </div> 
+                {%- endfor %}
+                <!-- ----------------------------------------------------------------------- -->
+                <!--              TODO:     Add some whitespace here                         -->
+                <!-- ----------------------------------------------------------------------- -->
+                <form action = "{{ request.path }}" method = "post">
+                    <label class="field fieldv_1" for = "title">
+                    <input class="field__input" type = "text" name = "title" placeholder = "Title" style="color: white;">
+                    <span class="field__label-wrap">
+                        <span class="field__label">Title</span>
+                    </span></label><br>
+
+                    <label class="field fieldv_1" for = "entry">
+                    <textarea class="field__input" id="text" name="entry" placeholder="entry" rows="12" cols="50" style="color: white; height: 300px;"></textarea><br>
+                    <span class="field__label-wrap">
+                        <span class="field__label">Entry</span>
+                    </span></label><br>
+                    <div class="centered_button">
+                         <input class="button" type = "submit" value = "Submit" />
+                    </div>
+                   
+                    
+                </form>
+            </body>
+            <footer>
+                <p style="font-size: smaller; text-align: center; color: white;">© Vivian Hafener 2021</p>
+            </footer>
+        </div>
         
-            {%- for category, message in get_flashed_messages(with_categories = true) %}
-            <div class = "alert alert-danger">
-                {{ message }}
-            </div>
-            {%- endfor %}
-            <!-- These could fit the theme better, but for now all functionality is there -->
-            <form action = "{{ request.path }}" method = "post">
-                <label for = "title">Title</label><br>
-                <input type = "text" name = "title" placeholder = "Title" /><br>
-                <label for = "time">Time and Date</label><br>
-                <input type = "text" name = "time" placeholder = "Time" /><br>
-                <label for = "entry">Entry</label><br>
-                <textarea id="text" name="entry" placeholder="entry" rows="12" cols="50"></textarea><br>
-                <input class="button" type = "submit" value = "Submit" />
-            </form>
-        </body>
-        <footer>
-            <p style="font-size: smaller; text-align: center; color: white;">© Vivian Hafener 2021</p>
-        </footer>
-    </main>
+    </run>
+
+    <script>
+        function openNav() {
+          document.getElementById("myNav").style.height = "100%";
+        }
+        
+        function closeNav() {
+          document.getElementById("myNav").style.height = "0%";
+        }
+        </script>
 </html>

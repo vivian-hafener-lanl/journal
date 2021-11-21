@@ -7,20 +7,6 @@ from flask_login import LoginManager
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
 
-# This should totally be moved to models. I also don't think it needs to be jrnl_db
-class journal(db.Model):
-    id = db.Column('entry_id', db.Integer, primary_key = True)
-    u_id = db.Column(db.Integer)
-    title = db.Column(db.String(100))
-    time = db.Column(db.String(50))
-    entry = db.Column(db.String(200))
-
-    def __init__(self, u_id, title, time, entry):
-        self.u_id = u_id
-        self.title = title
-        self.time = time
-        self.entry = entry
-
 def create_app():
     app = Flask(__name__)
 
@@ -45,7 +31,7 @@ def create_app():
     app.register_blueprint(auth_blueprint)
 
     # blueprint for non-auth parts of app
-    from .main import main as main_blueprint
-    app.register_blueprint(main_blueprint)
+    from .run import run as run_blueprint
+    app.register_blueprint(run_blueprint)
 
     return app

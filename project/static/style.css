@@ -1,13 +1,59 @@
-/* * {
-    background-color: #3e3e42;
-} */
+/* Sources for css:
 
+ - w3schools
+ - Stas Melnikov - CSS only material inputs codepen demo
+
+*/
+
+
+.red_alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+.green_alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn_alert {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn_alert:hover {
+  color: black;
+}
+
+/* Centered button */
+.centered_button {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
 
 /* Navbar stuff */
 
 .notification:not(:last-child),
 
 .notification.is-danger{background-color:#ff3860;color:#fff}
+
+a:visited {
+    color: black;
+}
 
 .nav-ul {
     list-style-type: none;
@@ -50,12 +96,275 @@ head {
     grid-row-end: 1;
 }
 
-nav {
+/* nav {
     grid-column-start: 3;
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 1;
+} */
+
+span {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 1;
 }
+
+/* Fullscreen Nav */
+
+
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+  }
+  
+  .overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+  }
+  
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .overlay {overflow-y: auto;}
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    }
+  }
+
+
+/* Material design */
+
+/*
+=====
+RESET STYLES
+=====
+*/
+
+.field__input{ 
+    --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #767676);
+    
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+  
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  
+    font-family: inherit;
+    font-size: inherit;
+  }
+  
+  .field__input:focus::-webkit-input-placeholder{
+    color: var(--uiFieldPlaceholderColor);
+  }
+  
+  .field__input:focus::-moz-placeholder{
+    color: var(--uiFieldPlaceholderColor);
+  }
+  
+  /*
+  =====
+  CORE STYLES
+  =====
+  */
+  
+  .field{
+    --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
+    --uiFieldPaddingRight: var(--fieldPaddingRight, 1rem);
+    --uiFieldPaddingLeft: var(--fieldPaddingLeft, 1rem);   
+    --uiFieldBorderColorActive: var(--fieldBorderColorActive, rgba(22, 22, 22, 1));
+  
+    display: var(--fieldDisplay, inline-flex);
+    position: relative;
+    font-size: var(--fieldFontSize, 1rem);
+  }
+  
+  .field__input{
+    box-sizing: border-box;
+    width: var(--fieldWidth, 100%);
+    height: var(--fieldHeight, 3rem);
+    padding: var(--fieldPaddingTop, 1.25rem) var(--uiFieldPaddingRight) var(--fieldPaddingBottom, .5rem) var(--uiFieldPaddingLeft);
+    border-bottom: var(--uiFieldBorderWidth) solid var(--fieldBorderColor, rgba(0, 0, 0, .25));  
+  }
+  
+  .field__input:focus{
+    outline: none;
+  }
+  
+  .field__input::-webkit-input-placeholder{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+  }
+  
+  .field__input::-moz-placeholder{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+  }
+  
+  .field__input:focus::-webkit-input-placeholder{
+    opacity: 1;
+    transition-delay: .2s;
+  }
+  
+  .field__input:focus::-moz-placeholder{
+    opacity: 1;
+    transition-delay: .2s;
+  }
+  
+  .field__label-wrap{
+    box-sizing: border-box;
+    pointer-events: none;
+    cursor: text;
+  
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .field__label-wrap::after{
+    content: "";
+    box-sizing: border-box;
+    width: 100%;
+    height: 0;
+    opacity: 0;
+  
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .field__input:focus ~ .field__label-wrap::after{
+    opacity: 1;
+  }
+  
+  .field__label{
+    position: absolute;
+    left: var(--uiFieldPaddingLeft);
+    top: calc(50% - .5em);
+  
+    line-height: 1;
+    font-size: var(--fieldHintFontSize, inherit);
+  
+    transition: top .2s cubic-bezier(0.9, -0.15, 0.1, 1.15), opacity .2s ease-out, font-size .2s ease-out;
+    will-change: bottom, opacity, font-size;
+  }
+  
+  .field__input:focus ~ .field__label-wrap .field__label,
+  .field__input:not(:placeholder-shown) ~ .field__label-wrap .field__label{
+    --fieldHintFontSize: var(--fieldHintFontSizeFocused, .75rem);
+  
+    top: var(--fieldHintTopHover, .25rem);
+  }
+  
+  /* 
+  effect 1
+  */
+  
+  .field_v1 .field__label-wrap::after{
+    border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+    transition: opacity .2s ease-out;
+    will-change: opacity;
+  }
+  
+  /* 
+  effect 2
+  */
+  
+  .field_v2 .field__label-wrap{
+    overflow: hidden;
+  }
+  
+  .field_v2 .field__label-wrap::after{
+    border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+    transform: translate3d(-105%, 0, 0);
+    will-change: transform, opacity;
+    transition: transform .285s ease-out .2s, opacity .2s ease-out .2s;
+  }
+  
+  .field_v2 .field__input:focus ~ .field__label-wrap::after{
+    transform: translate3d(0, 0, 0);
+    transition-delay: 0;
+  }
+  
+  /*
+  effect 3
+  */
+  
+  .field_v3 .field__label-wrap::after{
+    border: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+    will-change: opacity, height;
+    transition: height .2s ease-out, opacity .2s ease-out;
+  }
+  
+  .field_v3 .field__input:focus ~ .field__label-wrap::after{
+    height: 100%;
+  }
+  
+  /*
+  =====
+  LEVEL 4. SETTINGS
+  =====
+  */
+  
+  .field{
+    --fieldBorderColor: #D1C4E9;
+    --fieldBorderColorActive: #673AB7;
+  }
+  
+  .page{
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+    padding: 1rem;
+  
+    display: grid;
+    grid-gap: 30px;
+  }
+  
+  .substack{
+    border:1px solid #EEE; 
+    background-color: #fff;
+    width: 100%;
+    max-width: 480px;
+    height: 280px;
+    margin: 1rem auto;;
+  }
 
 /* General stuff */
 
@@ -86,6 +395,19 @@ h3 {
     font-size: 16px;
 }
 
+.wide_button {
+  background-color: aquamarine;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 45%;
+}
+
+
 .button:hover {
     background-color: aqua;
 }
@@ -96,6 +418,18 @@ h3 {
     margin: 5px;
 }
 
+.single_entry_rounded {
+  background-color: aquamarine;
+  border-radius: 8px;
+  margin: 1.2em;
+  width: 70%;
+}
+.single_entry {
+    margin: 5px;
+    padding-left: 0.9em;
+    padding-right: 0.9em;
+}
+
 .rounded {
     background-color: aquamarine;
     border-radius: 8px;
@@ -104,12 +438,14 @@ h3 {
 
 @media only screen and (max-width: 600){
     .rounded {
-        max-width: 100%;
+        width: 100%;
     }
 }
+
 @media only screen and (min-width: 1000px) {
     .rounded {
-        max-width: 50%;
+        /* This next line is imprecise and should be fixed. Currently 50 % activates float due to margins */
+        width: 45%;
         margin: 0.7em;
         float: left;
         /* Aesthetically I think float works ok here, but I was originally thinking about doing 50/50 */
