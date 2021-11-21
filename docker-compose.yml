@@ -1,0 +1,9 @@
+version: "3.9.7"
+services:
+  app:
+    build: /
+    command: python3 project/main.py
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/journal
