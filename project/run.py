@@ -4,8 +4,8 @@ from os import name
 from flask import Blueprint, render_template, request, flash, url_for, redirect
 from flask_login import login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
-from . import db
-from .models import User, Journal
+from __init__ import db
+from models import User, Journal
 from datetime import datetime
 
 run = Blueprint('run', __name__)
