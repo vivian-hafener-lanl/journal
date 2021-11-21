@@ -6,8 +6,8 @@
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
-          <a href="{{url_for('main.home')}}">Home</a>
-          <a href="{{url_for('main.profile')}}">Profile</a>
+          <a href="{{url_for('run.home')}}">Home</a>
+          <a href="{{url_for('run.profile')}}">Profile</a>
           <a href="{{url_for('auth.logout')}}">Logout</a>
         </div>
     </div>
@@ -16,7 +16,7 @@
         <head>
             <title>Home - Journal</title>
             <link rel="stylesheet" type="text/css" href="/static/style.css"/>
-            <a href="{{ url_for ('main.home') }}"><h3>{{ name }}'s Journal</h3></a>
+            <a href="{{ url_for ('run.home') }}"><h3>{{ name }}'s Journal</h3></a>
 
         </head>
         <span style="font-size:30px;cursor:pointer;float:right;color: white;" onclick="openNav()">&#9776;</span>

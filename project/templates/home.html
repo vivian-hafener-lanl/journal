@@ -6,8 +6,8 @@
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
-          <a href="{{url_for('main.home')}}">Home</a>
-          <a href="{{url_for('main.profile')}}">Profile</a>
+          <a href="{{url_for('run.home')}}">Home</a>
+          <a href="{{url_for('run.profile')}}">Profile</a>
           <a href="{{url_for('auth.logout')}}">Logout</a>
         </div>
     </div>
@@ -43,10 +43,10 @@
 
 
         <div>
-            <a href="{{ url_for('main.new') }}"><button type="button" class="button">New entry:</button></a>
+            <a href="{{ url_for('run.new') }}"><button type="button" class="button">New entry:</button></a>
         </div>
         {% for entry in Journal if entry.u_id == current_user.id %}
-            <a href="{{ url_for ('main.entries', username = name, entry_id=entry.id)}}" style="color: black; text-decoration: none;"><div class="rounded">
+            <a href="{{ url_for ('run.entries', username = name, entry_id=entry.id)}}" style="color: black; text-decoration: none;"><div class="rounded">
                 <!-- <span style="float: right;"><button class="dropbtn">...</button></a></span> -->
                 <h4 class="entry">{{ entry.title }}</h4> 
                 <p class="entry">{{ entry.time.date().strftime("%m/%d/%Y") }} at {{ entry.time.time().strftime("%H:%M:%S") }}</p>
