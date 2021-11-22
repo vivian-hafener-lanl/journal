@@ -6,12 +6,13 @@ RUN apk add tzdata && \
     echo "America/New_York" > /etc/timezone && \
     apk del tzdata
 
-WORKDIR /project
+WORKDIR /app
 RUN apk add build-base
-ADD requirements.txt /project
+COPY requirements.txt /app
 RUN pip3 install -r requirements.txt
-ADD . /project
+COPY . /app
+CMD ["python3", "-m" , "flask", "run", "--host=0.0.0.0"]
 
-ENTRYPOINT ["python3"]
-CMD project/run.py
+# ENTRYPOINT ["project/app.py"]
+# CMD project/run.py
 # CMD ["--bind=127.0.0.1:5000"]
