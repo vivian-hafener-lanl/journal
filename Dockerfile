@@ -11,6 +11,7 @@ RUN apk add build-base
 COPY requirements.txt /app
 RUN pip3 install -r requirements.txt
 COPY . /app
+RUN chmod -R g+rw /app/project
 CMD ["python3", "-m" , "flask", "run", "--host=0.0.0.0"]
 
 # ENTRYPOINT ["project/app.py"]
